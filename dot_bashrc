@@ -90,4 +90,5 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 # Paths
-export PATH=/usr/sbin:/usr/bin:/bin:~/.local/bin:/usr/local/bin:/snap/bin:$PATH
+export PATH=/usr/sbin:/usr/bin:/bin:/usr/local/bin:/snap/bin:$PATH
+export PATH=~/go/bin:~/.local/bin:$PATH
