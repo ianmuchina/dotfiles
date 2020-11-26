@@ -8,16 +8,15 @@ steps:
   image:  ubuntu:groovy
   commands:
   - apt-get update
-  - apt-get -y install sudo
+  - apt-get -y install sudo git
   - export DEBIAN_FRONTEND=noninteractive
-
   - ./run_pkg.sh
 
 - name: debian 11
   image: debian:bullseye
   commands:
   - apt-get update
-  - apt-get -y install sudo
+  - apt-get -y install sudo git
   - export DEBIAN_FRONTEND=noninteractive
 
   - ./run_pkg.sh
