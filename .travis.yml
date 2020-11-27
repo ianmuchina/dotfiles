@@ -1,4 +1,6 @@
+## Snap tests
 language: bash
 dist: focal
 script:
-    - ./run_pkg.sh
+  - sudo apt install snapd
+  - sudo snap install $(cat ./pkg/snap.txt)
