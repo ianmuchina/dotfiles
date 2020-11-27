@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt-get -y install $(cat ./pkg/apt.txt )
 
 # Snap
-sudo snap install $(cat ./pkg/snap.txt)
+# sudo snap install $(cat ./pkg/snap.txt)
 
 # Pypi
 pip3 install $(cat ./pkg/pip.txt) #Pypi
