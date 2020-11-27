@@ -7,18 +7,11 @@ steps:
 - name: ubuntu 20:10
   image:  ubuntu:groovy
   commands:
-  - export TZ=Africa/Nairobi
-  - export DEBIAN_FRONTEND=noninteractive 
-  - apt-get update
-  - apt-get -y install tzdata
-  - apt-get -y install sudo git
+  - ./pkg/pre.sh
   - ./run_pkg.sh
 
-- name: debian 11
+- name: bullseye
   image: debian:bullseye
   commands:
-  - export TZ=Africa/Nairobi
-  - export DEBIAN_FRONTEND=noninteractive && apt-get -y install tzdata
-  - apt-get update
-  - apt-get -y install sudo git
+  - ./pkg/pre.sh
   - ./run_pkg.sh
