@@ -1,0 +1,17 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: ubuntu 20:10
+  image:  ubuntu:groovy
+  commands:
+  - ./pkg/pre.sh
+  - ./run_pkg.sh
+
+- name: bullseye
+  image: debian:bullseye
+  commands:
+  - ./pkg/pre.sh
+  - ./run_pkg.sh
