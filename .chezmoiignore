@@ -1,5 +1,5 @@
-pkg
-pkg/*
+pkg/
 *.sh
 README.md
 .travis.yml
+.drone.yml
