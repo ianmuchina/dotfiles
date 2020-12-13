@@ -34,6 +34,11 @@ alias yhd='youtube-dl  -f "bestvideo[height<=720]+bestaudio/best[height<=720]"  
 # Audio
 alias ymp3='youtube-dl --embed-thumbnail --no-playlist -x --audio-format mp3 -o "~/Music/%(uploader)s/%(title)s.%(ext)s"'
 
+# Video Playlist
+alias ypl='youtube-dl   -f "bestvideo[height<=720]+bestaudio/best[height<=720]"   --no-playlist -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+# Audio Playlist
+alias ypl3='youtube-dl   -f "bestvideo[height<=720]+bestaudio/best[height<=720]" -x --audio-format mp3 --no-playlist -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+
 ## Local Server
 alias rbsrv='ruby -run -ehttpd . -p '
 alias pysrv='python3 -m http.server'
