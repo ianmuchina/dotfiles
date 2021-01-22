@@ -1,8 +1,8 @@
 #!/bin/bash
 ## Replacements For standard utilities
-command -v podman && alias docker=podman # Safer Containers
-command -v bat    && alias bat="bat -p"  # cat with syntax highlighting
-command -v exa    && alias ls='exa'      # Replacement for ls
+command -v podman > /dev/null && alias docker=podman &> /dev/null # Safer Containers
+command -v at     > /dev/null && alias bat="bat -p"  # cat with syntax highlighting
+command -v exa    > /dev/null && alias ls='exa'      # Replacement for ls
 
 
 alias reload='source ~/.bashrc'     # reload ~/.bashrc
