@@ -1,8 +1,6 @@
-ansible 
 apt-file 
 apt-transport-https 
 aria2 
-astyle 
 axel 
 build-essential 
 clang
