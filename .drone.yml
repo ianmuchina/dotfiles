@@ -4,14 +4,14 @@ type: docker
 name: default
 
 steps:
-- name: ubuntu 20:10
+- name: Ubuntu Tests
   image:  ubuntu:groovy
   commands:
   - ./pkg/pre.sh
   - ./run_pkg.sh
 
-- name: bullseye
-  image: debian:bullseye
+- name: Debian Tests
+  image: debian:testing
   commands:
   - ./pkg/pre.sh
   - ./run_pkg.sh
