@@ -1,7 +1,5 @@
 # ~/.dotfiles
 
-<a href="https://travis-ci.com/github/IanMuchina/dotfiles/builds/"><img alt="Travis (.com) branch" src="https://img.shields.io/travis/com/IanMuchina/dotfiles/dev?logo=github&style=flat-square"></a>
-
 To get started, install [`chezmoi`](https://www.chezmoi.io/)
 ```
 $ sudo snap install chezmoi --classic
