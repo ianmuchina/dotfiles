@@ -1,19 +1,16 @@
-alias reload='source ~/.bashrc'  # reload ~/.bashrc
+#!/bin/bash
+## Replacements For standard utilities
+command -v podman && alias docker=podman # Safer Containers
+command -v bat    && alias bat="bat -p"  # cat with syntax highlighting
+command -v exa    && alias ls='exa'      # Replacement for ls
 
-alias sampler="sampler --config ~/.config/sampler/config.yml "
 
-alias c='clear && source ~/.bashrc'     # Clear and reload
-
-alias docker=podman
-
-alias cat="bat -p"
-alias cp="cp -i"    # confirm before overwriting something
-alias ls='exa' # Replacement for ls
-alias bat="bat -p"    # cat with syntax highlighting
-
+alias reload='source ~/.bashrc'     # reload ~/.bashrc
+alias c='clear && source ~/.bashrc' # Clear and reload
+alias cp="cp -i"  # Ask for confirmation before overwrites
 alias df='df -h'
-
 alias free='free -h'
+
 alias np='nano -w PKGBUILD'
 alias more=less
 
@@ -21,24 +18,52 @@ alias grep='grep --colour=auto'
 alias egrep='egrep --colour=auto'
 alias fgrep='fgrep --colour=auto'
 
-alias a2path='echo "export PATH=$PWD:\$PATH" >> ~/.bashrc'    # Add current folder to path
-alias ping='ping -c 4'    # Ping only 4 times
-alias gh='history | grep ' # Grep history
+alias a2path='echo "export PATH=$PWD:\$PATH" >> ~/.bashrc'         # Add current folder to path
+alias ping='ping -c 4'                                             # Ping only 4 times
+alias gh='history | grep '                                         # Grep history
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com -4' # Get Public IP
 
-## Video Downloader ## 
-alias ydl='youtube-dl --embed-thumbnail -o "./%(title)s.%(ext)s"'
-# Video
-alias y1080='youtube-dl -f "bestvideo[height<=1080]+bestaudio/best[height<=1080]" --no-playlist -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
-alias yhd='youtube-dl  -f "bestvideo[height<=720]+bestaudio/best[height<=720]"    --no-playlist -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
-# Audio
-alias ymp3='youtube-dl --embed-thumbnail --no-playlist -x --audio-format mp3 -o "~/Music/%(uploader)s/%(title)s.%(ext)s"'
+# youtube-dl
+
+# Saves to ./ (current folder)
+alias ydl='youtube-dl -o "./%(title)s.%(ext)s"'
+
+# 1080p Video
+# Saves to ~/Videos/Uploader/Title.ext
+alias y1080='youtube-dl 
+    -f "bestvideo[height<=1080]+bestaudio" 
+    -no-playlist 
+    -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
+
+# 720p Video
+# Save to ~/Videos/Uploader/Title.ext
+alias yhd='youtube-dl  
+    -f "bestvideo[height<=720]+bestaudio"    
+    --no-playlist 
+    -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
 
 # Video Playlist
-alias ypl='youtube-dl   -f "bestvideo[height<=720]+bestaudio/best[height<=720]"   --no-playlist -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
-# Audio Playlist
-alias ypl3='youtube-dl   -f "bestvideo[height<=720]+bestaudio/best[height<=720]" -x --audio-format mp3 --no-playlist -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+# Save to ~/Videos/Uploader/Playlist_Title/Video_Title.ext
+alias ypl='youtube-dl  
+    -f "bestvideo[height<=720]+bestaudio"
+    -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
 
-## Local Server
+# Audio
+# Save to ~/Music/Uploader/Title.ext
+alias ymp3='youtube-dl
+    -f "bestaudio"
+    -x --audio-format mp3 
+    --embed-thumbnail
+    --no-playlist
+    -o "~/Music/%(uploader)s/%(title)s.%(ext)s"' 
+
+# Audio Playlist
+# Save to ~/Videos/Uploader/Title.ext
+alias ypl3='youtube-dl
+    -f "bestvideo[height<=720]+bestaudio" -x 
+    --audio-format mp3 
+    -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+
+# Serve current folder on localhost
 alias rbsrv='ruby -run -ehttpd . -p '
 alias pysrv='python3 -m http.server'
