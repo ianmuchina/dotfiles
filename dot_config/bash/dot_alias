@@ -1,7 +1,7 @@
 #!/bin/bash
 ## Replacements For standard utilities
-command -v podman > /dev/null && alias docker=podman &> /dev/null # Safer Containers
-command -v at     > /dev/null && alias bat="bat -p"  # cat with syntax highlighting
+command -v podman > /dev/null && alias docker="podman" # Safer Containers
+command -v bat    > /dev/null && alias cat="bat -p"  # cat with syntax highlighting
 command -v exa    > /dev/null && alias ls='exa'      # Replacement for ls
 
 
@@ -30,39 +30,22 @@ alias ydl='youtube-dl -o "./%(title)s.%(ext)s"'
 
 # 1080p Video
 # Saves to ~/Videos/Uploader/Title.ext
-alias y1080='youtube-dl 
-    -f "bestvideo[height<=1080]+bestaudio" 
-    -no-playlist 
-    -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
+alias y1080='youtube-dl -f "bestvideo[height<=1080]+bestaudio"     -no-playlist     -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
 
 # 720p Video
 # Save to ~/Videos/Uploader/Title.ext
-alias yhd='youtube-dl  
-    -f "bestvideo[height<=720]+bestaudio"    
-    --no-playlist 
-    -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
-
+alias yhd='youtube-dl  -f "bestvideo[height<=720]+bestaudio"        --no-playlist      -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
 # Video Playlist
 # Save to ~/Videos/Uploader/Playlist_Title/Video_Title.ext
-alias ypl='youtube-dl  
-    -f "bestvideo[height<=720]+bestaudio"
-    -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+alias ypl='youtube-dl      -f "bestvideo[height<=720]+bestaudio"    -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
 
 # Audio
 # Save to ~/Music/Uploader/Title.ext
-alias ymp3='youtube-dl
-    -f "bestaudio"
-    -x --audio-format mp3 
-    --embed-thumbnail
-    --no-playlist
-    -o "~/Music/%(uploader)s/%(title)s.%(ext)s"' 
+alias ymp3='youtube-dl    -f "bestaudio"    -x --audio-format mp3     --embed-thumbnail    --no-playlist    -o "~/Music/%(uploader)s/%(title)s.%(ext)s"' 
 
 # Audio Playlist
 # Save to ~/Videos/Uploader/Title.ext
-alias ypl3='youtube-dl
-    -f "bestvideo[height<=720]+bestaudio" -x 
-    --audio-format mp3 
-    -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+alias ypl3='youtube-dl    -f "bestvideo[height<=720]+bestaudio" -x     --audio-format mp3     -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
 
 # Serve current folder on localhost
 alias rbsrv='ruby -run -ehttpd . -p '
