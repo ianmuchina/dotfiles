@@ -30,22 +30,22 @@ alias ydl='youtube-dl -o "./%(title)s.%(ext)s"'
 
 # 1080p Video
 # Saves to ~/Videos/Uploader/Title.ext
-alias y1080='youtube-dl -f "bestvideo[height<=1080]+bestaudio"     -no-playlist     -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
+alias y1080='youtube-dl -f "[height<=1080]"  -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"   --no-playlist   '
 
 # 720p Video
 # Save to ~/Videos/Uploader/Title.ext
-alias yhd='youtube-dl  -f "bestvideo[height<=720]+bestaudio"        --no-playlist      -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
+alias yhd='youtube-dl   -f "[height<=720]"   -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"   --no-playlist    '
 # Video Playlist
 # Save to ~/Videos/Uploader/Playlist_Title/Video_Title.ext
-alias ypl='youtube-dl      -f "bestvideo[height<=720]+bestaudio"    -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+alias ypl='youtube-dl   -f "[height<=720]"   -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
 
 # Audio
 # Save to ~/Music/Uploader/Title.ext
-alias ymp3='youtube-dl    -f "bestaudio"    -x --audio-format mp3     --embed-thumbnail    --no-playlist    -o "~/Music/%(uploader)s/%(title)s.%(ext)s"' 
+alias ymp3='youtube-dl  -f "bestaudio"       -o "~/Music/%(uploader)s/%(title)s.%(ext)s"    --no-playlist -x --audio-format mp3               --embed-thumbnail        ' 
 
 # Audio Playlist
 # Save to ~/Videos/Uploader/Title.ext
-alias ypl3='youtube-dl    -f "bestvideo[height<=720]+bestaudio" -x     --audio-format mp3     -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
+alias ypl3='youtube-dl  -f "bestaudio"       -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"     -x     --audio-format mp3  '
 
 # Serve current folder on localhost
 alias rbsrv='ruby -run -ehttpd . -p '
