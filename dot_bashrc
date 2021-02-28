@@ -82,6 +82,8 @@ PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\] \[\e[36m\]\w\[\
 # If starship.rs is installed
 command -v starship &> /dev/null && eval "$(starship init bash)"
 
+# Use bat as the man page reader 
+command -v bat &> /dev/null && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
