@@ -1,2 +1,5 @@
 youtube-dl 
 anime-downloader
+black
+mypy
+pylint
