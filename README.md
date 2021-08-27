@@ -1,13 +1,17 @@
 # ~/.dotfiles
 
-To get started, install [`chezmoi`](https://www.chezmoi.io/)
+Personal dotfiles. Managed with Chezmoi.
+
+## Instructions
+
+[Install `chezmoi`](https://www.chezmoi.io/docs/install/)
+
+Checkout repo
+
 ```
-$ sudo snap install chezmoi --classic
+$ chezmoi init https://github.com/IanMuchina/dotfiles.git --apply
 ```
-Then checkout this repo:
-```
-$ chezmoi init https://github.com/IanMuchina/dotfiles.git --apply 
-```
+
 That's it.
 
-![](https://i.imgur.com/HaohUix.jpg)
+![Dodge meme](https://i.imgur.com/HaohUix.jpg)
