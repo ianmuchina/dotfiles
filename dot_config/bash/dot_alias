@@ -1,15 +1,14 @@
 #!/bin/bash
 ## Replacements For standard utilities
-command -v podman > /dev/null && alias docker="podman" # Safer Containers
-command -v bat    > /dev/null && alias cat="bat -p"  # cat with syntax highlighting
-command -v exa    > /dev/null && alias ls='exa'      # Replacement for ls
-
+command -v podman >/dev/null && alias docker="podman" # Safer Containers
+command -v bat >/dev/null && alias cat="bat -p"       # cat with syntax highlighting
+command -v exa >/dev/null && alias ls='exa'           # Replacement for ls
 
 alias reload='source ~/.bashrc'     # reload ~/.bashrc
 alias c='clear && source ~/.bashrc' # Clear and reload
-alias cp="cp -i"  # Ask for confirmation before overwrites
-alias df='df -h'
-alias free='free -h'
+alias cp="cp -i"                    # Ask for confirmation before overwrites
+alias df='df -h'                    # Human Readable
+alias free='free -h'                # Human readable
 
 alias np='nano -w PKGBUILD'
 alias more=less
@@ -41,7 +40,7 @@ alias ypl='youtube-dl   -f "[height<=720]"   -o "~/Videos/%(uploader)s/%(playlis
 
 # Audio
 # Save to ~/Music/Uploader/Title.ext
-alias ymp3='youtube-dl  -f "bestaudio"       -o "~/Music/%(uploader)s/%(title)s.%(ext)s"    --no-playlist -x --audio-format mp3               --embed-thumbnail        ' 
+alias ymp3='youtube-dl  -f "bestaudio"       -o "~/Music/%(uploader)s/%(title)s.%(ext)s"    --no-playlist -x --audio-format mp3               --embed-thumbnail        '
 
 # Audio Playlist
 # Save to ~/Videos/Uploader/Title.ext
