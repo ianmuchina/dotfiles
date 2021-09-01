@@ -22,8 +22,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'wakatime/vim-wakatime'
     "Colorscheme
     Plug 'joshdick/onedark.vim'
+    Plug 'drewtempelmeyer/palenight.vim'
     "Brackets Pair Colorizer
     Plug 'junegunn/rainbow_parentheses.vim'
+
+
+    "Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+
+    " If you want to display icons, then use one of these plugins:
+    "Plug 'kyazdani42/nvim-web-devicons' " lua
+    "Plug 'ryanoasis/vim-devicons' " vimscript
 
 call plug#end()
 
@@ -51,7 +59,7 @@ set smarttab                            " Makes tabbing smarter will realize you
 set expandtab                           " Converts tabs to spaces
 set smartindent                         " Makes indenting smart
 set autoindent                          " Good auto indent
-set laststatus=0                        " Always display the status line
+set laststatus=2                        " Always display the status line
 set number                              " Line numbers
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
@@ -70,24 +78,43 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 " You can't stop me
 cmap w!! w !sudo tee %
 
-
-" onedark.vim override: Don't set a background color when running in a terminal;
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
-  augroup END
-endif
-
+" Colors
 hi Comment cterm=italic
-let g:onedark_hide_endofbuffer=1
-let g:onedark_terminal_italics=1
-let g:onedark_termcolors=256
+let g:palenight_hide_endofbuffer=1
+let g:palenight_terminal_italics=1
+let g:palenight_termcolors=256
 
 syntax on
-colorscheme onedark
 
+let g:onedark_color_overrides = {
+\ "red": { "gui": "#ff6d7e", "cterm": "204", "cterm16": "1" },
+\ "light_red": { "gui": "#ff869a", "cterm": "204", "cterm16": "1" },
+\ "dark_red": { "gui": "#BE5046", "cterm": "196", "cterm16": "9" },
+\ "green": { "gui": "#a2e57b", "cterm": "114", "cterm16": "2" },
+\ "yellow": { "gui": "#ffed72", "cterm": "180", "cterm16": "3" },
+\ "dark_yellow": { "gui": "#F78C6C", "cterm": "173", "cterm16": "11" },
+\ "blue": { "gui": "#82b1ff", "cterm": "39", "cterm16": "4" },
+\ "purple": { "gui": "#baa0f8", "cterm": "170", "cterm16": "5" },
+\ "blue_purple": { "gui": "#939ede", "cterm": "39", "cterm16": "4"},
+\ "cyan": { "gui": "#7cd5f1", "cterm": "38", "cterm16": "6" },
+\ "white": { "gui": "#f2fffc", "cterm": "145", "cterm16": "7" },
+\ "black": { "gui": "#131519", "cterm": "235", "cterm16": "0" },
+\ "visual_black": { "gui": "NONE", "cterm": "NONE", "cterm16": "0" },
+\ "comment_grey": { "gui": "#596678", "cterm": "59", "cterm16": "15" },
+\ "gutter_fg_grey": { "gui": "#4B5263", "cterm": "238", "cterm16": "15" },
+\ "cursor_grey": { "gui": "#2C323C", "cterm": "236", "cterm16": "8" },
+\ "visual_grey": { "gui": "#3E4452", "cterm": "237", "cterm16": "15" },
+\ "menu_grey": { "gui": "#3E4452", "cterm": "237", "cterm16": "8" },
+\ "special_grey": { "gui": "#3B4048", "cterm": "238", "cterm16": "15" },
+\ "vertsplit": { "gui": "#181A1F", "cterm": "59", "cterm16": "15" },
+\ "white_mask_1": { "gui": "#343a46", "cterm": "237", "cterm16": "15" },
+\ "white_mask_3": { "gui": "#454e5e", "cterm": "238", "cterm16": "15" },
+\ "white_mask_11": { "gui": "#6895a8", "cterm": "238", "cterm16": "15" }
+\}
+
+
+
+colorscheme palenight
 
 " checks if your terminal has 24-bit color support
 if (has("termguicolors"))
@@ -96,10 +123,9 @@ if (has("termguicolors"))
 endif
 
 " Lightline theme
-let g:lightline = {'colorscheme': 'one',}
+let g:lightline = {'colorscheme': 'palenight',}
 
 " Activate rainbow Parentheses. Like Brackets pair colorizer
-":RainbowParentheses
 
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']']]
@@ -113,6 +139,9 @@ let g:rainbow#blacklist = [233, 234]
 " ctrl-p plugin shortcut
 "let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_cmd = 'CtrlP'
+
+"Avoid the Escape key
+imap jj <Esc>
 
 " move between buffers
 map <C-Left> <Esc>:bprev<CR>
