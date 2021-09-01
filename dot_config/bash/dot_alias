@@ -19,7 +19,7 @@ alias fgrep='fgrep --colour=auto'
 
 alias a2path='echo "export PATH=$PWD:\$PATH" >> ~/.bashrc'         # Add current folder to path
 alias ping='ping -c 4'                                             # Ping only 4 times
-alias gh='history | grep '                                         # Grep history
+#alias gh='history | grep '                                         # Grep history
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com -4' # Get Public IP
 
 # youtube-dl
