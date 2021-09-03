@@ -16,6 +16,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jiangmiao/auto-pairs'
     " Status Line
     Plug 'itchyny/lightline.vim'
+    "Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
     " Track my coding progress
     Plug 'wakatime/vim-wakatime'
     "Colorscheme
@@ -25,7 +26,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     "Brackets Pair Colorizer
     Plug 'junegunn/rainbow_parentheses.vim'
 
-    "Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 
     " If you want to display icons, then use one of these plugins:
     "Plug 'kyazdani42/nvim-web-devicons' " lua

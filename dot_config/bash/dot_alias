@@ -3,6 +3,7 @@
 command -v podman >/dev/null && alias docker="podman" # Safer Containers
 command -v bat >/dev/null && alias cat="bat -p"       # cat with syntax highlighting
 command -v exa >/dev/null && alias ls='exa'           # Replacement for ls
+command -v fdfind >/dev/null && alias fd='fdfind'           # Replacement for ls
 
 alias reload='source ~/.bashrc'     # reload ~/.bashrc
 alias c='clear && source ~/.bashrc' # Clear and reload
