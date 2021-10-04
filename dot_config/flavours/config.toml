@@ -1,0 +1,31 @@
+# Kitty
+[[item]]
+file="~/.config/kitty/flavours.conf"
+template="kitty"
+rewrite=true
+
+# Alacritty
+[[item]]
+file = "~/.config/alacritty/alacritty.yml"
+template = "alacritty"
+subtemplate = "default-256"
+
+# Neovim
+[[item]]
+file = "~/.config/nvim/colors/flavours.vim"
+template = "vim"
+rewrite = true
+
+# Lightline (Neovim)
+[[item]]
+file = "~/.config/nvim/autoload/lightline/colorscheme/flavours.vim"
+template = "lightline"
+rewrite = true
+hook = "reloadnvim"
+
+# Vim
+[[item]]
+file = "~/.config/vim/colors/flavours.vim"
+template = "vim"
+rewrite = true
+hook = "reloadnvim"

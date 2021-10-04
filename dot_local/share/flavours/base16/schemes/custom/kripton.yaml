@@ -1,0 +1,18 @@
+scheme: "kripton"
+author: ""
+base00: "#131519" #Default Background
+base01: "#131519" #Lighter Background (Used for status bars)
+base02: "#303030" #Selection Background
+base03: "#505050" #Comments, Invisibles, Line Highlighting
+base04: "#B0B0B0" #Dark Foreground (Used for status bars)
+base05: "#D0D0D0" #Default Foreground, Caret, Delimiters, Operators
+base06: "#E0E0E0" #Light Foreground (Not often used)
+base07: "#F5F5F5" #Light Background (Not often used)
+base08: "#F07178" #Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+base09: "#F78C6C" #Integers, Boolean, Constants, XML Attributes, Markup Link Url
+base0A: "#FFCB6B" #Classes, Markup Bold, Search Text Background
+base0B: "#C3E88D" #Strings, Inherited Class, Markup Code, Diff Inserted
+base0C: "#89DDFF" #Support, Regular Expressions, Escape Characters, Markup Quotes
+base0D: "#82AAFF" #Functions, Methods, Attribute IDs, Headings
+base0E: "#C792EA" #Keywords, Storage, Selector, Markup Italic, Diff Changed
+base0F: "#FF5370" #Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>

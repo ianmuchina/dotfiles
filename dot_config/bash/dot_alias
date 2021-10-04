@@ -4,12 +4,16 @@ command -v podman >/dev/null && alias docker="podman" # Safer Containers
 command -v bat >/dev/null && alias cat="bat -p"       # cat with syntax highlighting
 command -v exa >/dev/null && alias ls='exa'           # Replacement for ls
 command -v fdfind >/dev/null && alias fd='fdfind'           # Replacement for ls
-
 alias reload='source ~/.bashrc'     # reload ~/.bashrc
 alias c='clear && source ~/.bashrc' # Clear and reload
 alias cp="cp -i"                    # Ask for confirmation before overwrites
 alias df='df -h'                    # Human Readable
 alias free='free -h'                # Human readable
+
+# Theme Switcher
+alias fv='flavours list | xargs -n1 | fzf --preview-window up --preview " flavours apply {} 2>/dev/null ; term-16-test.sh;kr "'
+# Reload current kitty terminal
+alias kr='kitty @ set-colors ~/.config/kitty/flavours.conf'
 
 alias np='nano -w PKGBUILD'
 alias more=less

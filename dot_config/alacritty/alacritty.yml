@@ -1,0 +1,28 @@
+font:
+  normal:
+    family: agave Nerd Font Mono
+    style: Regular
+
+  bold:
+    family: agave Nerd Font Mono
+    style: Bold
+
+  italic:
+    family: agave Nerd Font Mono
+    style: Italic
+
+  bold_italic:
+    family: agave Nerd Font Mono
+    style: Bold Italic
+
+  size: 13
+
+window:
+  padding:
+    x: 10
+    y: 10
+# Start flavours
+# This section is automatically configured by flavours
+# Modifications may be lost.
+# https://github.com/Misterio77/flavours
+# End flavours
