@@ -1,0 +1,21 @@
+{
+    "name": "flavours",
+    "displayName": "flavours",
+    "description": "flavours color scheme",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.61.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "flavours",
+                "uiTheme": "vs-dark",
+                "path": "./themes/flavours-color-theme.json"
+            }
+        ]
+    }
+}

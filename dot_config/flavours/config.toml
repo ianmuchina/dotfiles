@@ -21,11 +21,33 @@ rewrite = true
 file = "~/.config/nvim/autoload/lightline/colorscheme/flavours.vim"
 template = "lightline"
 rewrite = true
-hook = "reloadnvim"
 
 # Vim
 [[item]]
 file = "~/.config/vim/colors/flavours.vim"
 template = "vim"
 rewrite = true
-hook = "reloadnvim"
+
+# Kakoune
+[[item]]
+file = "~/.config/kak/colors/flavours.kak"
+template = "kakoune"
+rewrite = true
+
+# XFCE4 Terminal
+[[item]]
+file = "~/.config/xfce4/terminal/colorschemes/flavours.theme"
+template = "xfce4-terminal"
+rewrite = true
+
+# fzf
+[[item]]
+file = "~/.config/bash/fzf.sh"
+template = "fzf"
+rewrite = true
+
+# Vscode 
+[[item]]
+file = "~/.vscode/extensions/ianmuchina.kripton-flat-0.0.2/themes/Kripton-color-theme.json"
+template = "vscode"
+rewrite = true
