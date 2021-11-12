@@ -40,14 +40,10 @@ file = "~/.config/xfce4/terminal/colorschemes/flavours.theme"
 template = "xfce4-terminal"
 rewrite = true
 
-# fzf
+
+# Mousepad & Other Gnome Text Editors
 [[item]]
-file = "~/.config/bash/fzf.sh"
-template = "fzf"
+file = "~/.local/share/gtksourceview-3.0/styles/flavours.xml"
+template = "gtksourceview3"
 rewrite = true
 
-# Vscode 
-[[item]]
-file = "~/.vscode/extensions/ianmuchina.kripton-flat-0.0.2/themes/Kripton-color-theme.json"
-template = "vscode"
-rewrite = true
