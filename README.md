@@ -1,17 +1,11 @@
 # ~/.dotfiles
 
-Personal dotfiles. Managed with Chezmoi.
+Personal configuration files, managed with [chezmoi](https://www.chezmoi.io/).
 
-## Instructions
+## Setup
 
-[Install `chezmoi`](https://www.chezmoi.io/docs/install/)
+Install [`chezmoi`](https://www.chezmoi.io/docs/install/) then run this command.
 
-Checkout repo
-
+```sh
+chezmoi init --ssh ianmuchina --apply 
 ```
-$ chezmoi init https://github.com/IanMuchina/dotfiles.git --apply
-```
-
-That's it.
-
-![Dodge meme](https://i.imgur.com/HaohUix.jpg)
