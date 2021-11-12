@@ -1,1 +1,80 @@
+# colorscheme gruvbox
 colorscheme flavours
+
+# Plugin Manager
+plug "andreyorst/plug.kak" noload 
+
+
+# Wakatime stats
+plug "WhatNodyn/kakoune-wakatime"
+
+
+# Fzf for file & Buffer Management
+plug "https://github.com/andreyorst/fzf.kak" tag "v1.1.0" config %{
+    map global user f ': fzf-mode<ret>' -docstring 'fuzzy find'
+} defer fzf %{
+    map global normal <c-p> ': fzf-mode<ret>'
+    set-option global fzf_use_main_selection false
+} defer fzf-file %{
+    set-option global fzf_file_command 'fdfind --type f --exclude ".git/"'
+    # set-option global fzf_grep_command rg
+    set-option global fzf_highlight_command 'bat'
+} 
+
+map global normal <c-p> ': fzf-mode<ret>'
+
+
+# LSP Client
+plug "kak-lsp/kak-lsp"
+lsp-enable
+lsp-auto-hover-enable
+
+set-option global lsp_config %{
+           [language.python.settings._]
+           "pyls.configurationSources" = ["python-lsp-black","pyflakes","mccabe","pycodestyle","rope"]
+}
+# LSP: Python
+hook global WinSetOption filetype=python %{
+    jedi-enable-autocomplete
+    lint-enable
+    set-option global lintcmd 'flake8'
+}
+# 
+map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
+
+# Format go files
+# TODO: Tests
+hook global WinSetOption filetype=go %{
+  hook buffer BufWritePre .* lsp-formatting
+}
+
+
+# Tab Completion in insert mode
+hook global InsertCompletionShow .* %{
+    try %{
+        # this command temporarily removes cursors preceded by whitespace;
+        # if there are no cursors left, it raises an error, does not
+        # continue to execute the mapping commands, and the error is eaten
+        # by the `try` command so no warning appears.
+        execute-keys -draft 'h<a-K>\h<ret>'
+        map window insert <tab> <c-n>
+        map window insert <s-tab> <c-p>
+        hook -once -always window InsertCompletionHide .* %{
+            unmap window insert <tab> <c-n>
+            unmap window insert <s-tab> <c-p>
+        }
+    }
+}
+
+
+
+define-command comment %{
+    try %{
+        execute-keys _
+        comment-block
+    } catch comment-line
+}
+
+# comment lines
+map global normal '#' :comment-line<ret> -docstring 'comment line'
+map global normal '<a-#>' :comment-block<ret> -docstring 'comment block'
