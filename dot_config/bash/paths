@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Syntax sugar for adding to $PATH variable
+addPath() {
+    for dir in "$@"; do
+        # If folder exists, add to path
+        if [ -d "$dir" ]; then
+            export PATH="$PATH:$dir"
+        # TODO: Log errors
+        fi
+    done
+}
+
+addPath "/bin"
+addPath "/usr/bin"
+addPath "/usr/sbin"
+addPath "/usr/local/bin"
+
+addPath "/snap/bin"
+addPath "$HOME/.local/bin"
+
+# Package Managers & Language Runtimes
+addPath "$HOME/.fnm"        # Nodejs version Manager
+addPath "$HOME/.yarn/bin"   # alt npm client
+addPath "$HOME/go/bin"      # Golang
+addPath "$HOME/gems/bin"    # Ruby
+addPath "$HOME/.cargo/bin"  # Rust
+addPath "/usr/lib/dart/bin" # Dart

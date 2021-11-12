@@ -1,56 +1,57 @@
 #!/bin/bash
-## Replacements For standard utilities
-command -v podman >/dev/null && alias docker="podman" # Safer Containers
-command -v bat >/dev/null && alias cat="bat -p"       # cat with syntax highlighting
-command -v exa >/dev/null && alias ls='exa'           # Replacement for ls
-command -v fdfind >/dev/null && alias fd='fdfind'           # Replacement for ls
-alias reload='source ~/.bashrc'     # reload ~/.bashrc
-alias c='clear && source ~/.bashrc' # Clear and reload
-alias cp="cp -i"                    # Ask for confirmation before overwrites
-alias df='df -h'                    # Human Readable
-alias free='free -h'                # Human readable
+replace() {
+  # Dynamic alias
+  # Replacements For standard utilities
+  command -v "$2" >/dev/null && alias $1="$2"
+}
 
-# Theme Switcher
-alias fv='flavours list | xargs -n1 | fzf --preview-window up --preview " flavours apply {} 2>/dev/null ; term-16-test.sh;kr "'
+replace docker podman
+replace cat bat
+replace cat batcat
+replace ls exa
+replace fd fdfind
+# replace find fdfind
+
+# Normal aliases
+alias reload='. ~/.bashrc' # Reload bashrc
+alias c='reload'           # Reload bashrc
+
+alias html2md='pandoc -f html -t markdown'
+
+# Change linux wallpaper
+
 # Reload current kitty terminal
 alias kr='kitty @ set-colors ~/.config/kitty/flavours.conf'
+# Change Wallpaper, then change base16 theme
+# fx() {
+#   cd Pictures
+#   fzf --preview "flavours generate -n test -a test dark {} ; flavours apply generated; xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorDP-1/workspace0/last-image -s /home/ian2/Pictures/{}; term-16-test.sh"
+# }
 
-alias np='nano -w PKGBUILD'
-alias more=less
+# TODO: Convert to function
 
-alias grep='grep --colour=auto'
-alias egrep='egrep --colour=auto'
-alias fgrep='fgrep --colour=auto'
+# Interactive install Package
+alias inx='sudo apt install $(/bin/cat $HOME/.local/inx.txt | fzf --preview-window right --preview "apt show {} 2>/dev/null | batcat -p -l yaml --color always")'
+alias inx-refresh='apt list 2>/dev/null | cut -f1 -d"/" | grep -v "Listing..." > ~/.local/inx.txt'
 
-alias a2path='echo "export PATH=$PWD:\$PATH" >> ~/.bashrc'         # Add current folder to path
-alias ping='ping -c 4'                                             # Ping only 4 times
-#alias gh='history | grep '                                         # Grep history
-alias myip='dig +short myip.opendns.com @resolver1.opendns.com -4' # Get Public IP
+alias a2path='echo "export PATH=$PWD:\$PATH" >> ~/.bashrc' # Add current folder to path
 
-# youtube-dl
+alias ping='ping -c 4'      # Ping only 4 times
+alias grh='history | grep ' # Grep history
 
-# Saves to ./ (current folder)
-alias ydl='youtube-dl -o "./%(title)s.%(ext)s"'
-
-# 1080p Video
-# Saves to ~/Videos/Uploader/Title.ext
-alias y1080='youtube-dl -f "[height<=1080]"  -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"   --no-playlist   '
-
-# 720p Video
-# Save to ~/Videos/Uploader/Title.ext
-alias yhd='youtube-dl   -f "[height<=720]"   -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"   --no-playlist    '
-# Video Playlist
-# Save to ~/Videos/Uploader/Playlist_Title/Video_Title.ext
-alias ypl='youtube-dl   -f "[height<=720]"   -o "~/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"'
-
-# Audio
-# Save to ~/Music/Uploader/Title.ext
-alias ymp3='youtube-dl  -f "bestaudio"       -o "~/Music/%(uploader)s/%(title)s.%(ext)s"    --no-playlist -x --audio-format mp3               --embed-thumbnail        '
-
-# Audio Playlist
-# Save to ~/Videos/Uploader/Title.ext
-alias ypl3='youtube-dl  -f "bestaudio"       -o "~/Audio/%(uploader)s/%(playlist)s/%(title)s.%(ext)s"     -x     --audio-format mp3  '
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com -4' # get your ip
 
 # Serve current folder on localhost
 alias rbsrv='ruby -run -ehttpd . -p '
 alias pysrv='python3 -m http.server'
+#TODO: Add caddy & miniserve
+
+# Boring Aliases
+alias more='less'
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+
+alias cp="cp -i"     # Ask for confirmation before overwrites
+alias df='df -h'     # Human readable
+alias free='free -h' # Human readable
