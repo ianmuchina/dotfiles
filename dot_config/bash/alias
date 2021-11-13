@@ -6,8 +6,8 @@ replace() {
 }
 
 replace docker podman
-replace cat bat
-replace cat batcat
+replace cat 'bat -p'
+replace cat 'batcat -p'
 replace ls exa
 replace fd fdfind
 # replace find fdfind
