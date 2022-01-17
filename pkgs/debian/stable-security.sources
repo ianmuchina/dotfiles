@@ -1,0 +1,5 @@
+Enabled: no
+Types: deb
+URIs: https://security.debian.org/debian-security
+Suites: stable-security
+Components: main contrib non-free

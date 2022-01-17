@@ -1,0 +1,6 @@
+Enabled: no
+Types: deb
+URIs: https://dl.google.com/linux/chrome/deb/
+Suites: stable
+Components: main
+X-Key-URI: https://dl.google.com/linux/linux_signing_key.pub
