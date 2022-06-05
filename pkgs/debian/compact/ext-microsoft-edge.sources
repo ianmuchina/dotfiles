@@ -1,7 +1,0 @@
-Enabled: no
-Types: deb
-URIs: https://packages.microsoft.com/repos/edge/
-Suites: stable
-Components: main
-X-Name: Microsoft Edge
-X-Key-URI: https://packages.microsoft.com/keys/microsoft.asc

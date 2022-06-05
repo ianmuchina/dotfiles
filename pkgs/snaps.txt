@@ -1,5 +1,0 @@
-spotify
-telegram-desktop
-flutter
-android-studio
-slack

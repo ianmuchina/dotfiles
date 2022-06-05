@@ -1,8 +1,0 @@
-Enabled: no
-Types: deb
-URIs: https://download.opensuse.org/repositories/home:/manuelschneid3r/Debian_Testing/
-Suites: /
-Components:
-# Metadata
-X-Name: Albert Launcher
-X-Key-URI:
