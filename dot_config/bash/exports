@@ -1,53 +1,53 @@
 #!/bin/bash
-export GEM_HOME="$HOME/gems"
-# export NVIMHOME="$HOME/.config/nvim"
-# export NVIMRC="$NVIMHOME/init.vim"
+# prevent Ctrl-S from pausing the terminal
+stty -ixon
 
-# C Compiler & FLags
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+
+# Shell Prompt (Default)
+PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\] \[\e[36m\]\w\[\e[m\] \n; "
+
+# Shell Prompt (Fancy)
+command -v starship &>/dev/null &&
+  eval "$(starship init bash)"
+
+# Languages & Package Managers
+
+# 1. (C) Compiler & flags
 export CC="clang"
 export CFLAGS="-fsanitize=signed-integer-overflow -fsanitize=undefined -ggdb3 -O3 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow"
 export LDLIBS="-lm"
 
-# fnm (Fast Nodejs Manager)
-if command -v fnm &>/dev/null; then
+# (Javascript) nodejs Version Manager
+command -v fnm &>/dev/null &&
   eval "$(fnm env)"
-fi
 
-# Cargo
+# (Rust) Cargo Package Manager
 command -v cargo >/dev/null &&
   source "$HOME/.cargo/env"
 
-# Default Text Editor
-command -v nvim >/dev/null &&
-  export EDITOR="nvim"
-# Kakoune
-# command -v kak >/dev/null &&
-#   export EDITOR="kak"
-
-# specific to git
-# command -v code >/dev/null &&
-#   export EDITOR="code --wait --new-window"
-
-# Sdk Manager (java ecosystem)
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Vscode if in vscode terminal
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-  export EDITOR="code"
+# (Java) Sdkman Version Manager
+if [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]]; then
+  export SDKMAN_DIR="$HOME/.sdkman"
+  source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
-# Alternative editors
-# command -v kak >/dev/null && export EDITOR="kak"
-# command -v code >/dev/null && export EDITOR="code --wait --new-window"
-# Default Prompt
-PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\] \[\e[36m\]\w\[\e[m\] \n; "
+# Text Editors
+# Use Vscode if I'm in the vscode terminal
+[[ "$TERM_PROGRAM" == "vscode" ]] &&
+  export EDITOR="code"
+
+# Neovim
+command -v nvim >/dev/null &&
+  export EDITOR="nvim"
+
+# Kakoune
+command -v kak >/dev/null &&
+  export EDITOR="kak"
 
 # zoxide
 command -v zoxide &>/dev/null &&
   eval "$(zoxide init bash)"
-# prevent Ctrl-S from pausing the terminal
-stty -ixon
 
-# Starship Prompt
-command -v starship &>/dev/null &&
-  eval "$(starship init bash)"
+export PNPM_HOME="$HOME/.local/share/pnpm"

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+addPath() {
+    for dir in "$@"; do
+        # If folder exists, add to path
+        if [ -d "$dir" ]; then
+            export PATH="$PATH:$dir"
+        else
+            echo $dir >"$HOME/.not-path"
+        fi
+    done
+
+}
+
+replaceCmd() {
+    command -v "$2" >/dev/null &&
+        alias $1="$2"
+}

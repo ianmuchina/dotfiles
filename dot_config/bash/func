@@ -44,6 +44,7 @@ kitty_apply() {
 #   cat $listfile | fzf --preview-window right --preview _preview_cmd
 #   sudo apt install
 # }
+
 # Theme Switcher
 fv() {
   flavours list |
@@ -57,3 +58,28 @@ kv() (
     xargs -n1 |
     fzf --preview "flavours apply {} && kitty @ set-colors ~/.config/kitty/flavours.conf"
 )
+
+inx_refresh() {
+  apt list 2>/dev/null | cut -f1 -d "/" | grep -v "Listing..." >"$HOME/.local/inx.txt"
+}
+
+inx2() {
+
+  INDEX="$HOME/.local/inx.txt"
+
+  APPS=$(/bin/cat $INDEX |
+    fzf \
+      -m \
+      --preview-window right \
+      --preview "apt show {} 2>/dev/null | batcat -p -l yaml --color always")
+
+  # Extra confirmation step from user
+  # Apt will also add another confirmation step  since the '-y' flag is unset
+  echo "Will install the following apps :" $(echo $APPS | xargs -0)
+
+  read -p "Continue (y/n)?" choice
+  case "$choice" in
+  y | Y) echo sudo apt install "$APPS" ;;
+  *) exit ;;
+  esac
+}

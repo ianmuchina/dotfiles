@@ -5,20 +5,25 @@ evaluate-commands %sh{
     plugins="$kak_config/plugins"
     mkdir -p "$plugins"
     [ ! -e "$plugins/plug.kak" ] && \
-        git clone -q https://github.com/andreyorst/plug.kak.git "$plugins/plug.kak"
+        git clone -q https://github.com/much1na/plug.kak.git "$plugins/plug.kak"
     printf "%s\n" "source '$plugins/plug.kak/rc/plug.kak'"
 }
 
 # Plugin Manager
-plug "andreyorst/plug.kak" noload 
+plug "much1na/plug.kak" noload
 
+# Snippets
+plug "much1na/kakoune-snippets"
 
 # Wakatime stats
-plug "WhatNodyn/kakoune-wakatime"
+plug "much1na/kakoune-wakatime"
+
+# Emmet
+plug "much1na/kakoune-emmet"
 
 
 # Fzf for file & Buffer Management
-plug "https://github.com/andreyorst/fzf.kak" tag "v1.1.0" config %{
+plug "much1na/fzf.kak" tag "v1.1.0" config %{
     map global user f ': fzf-mode<ret>' -docstring 'fuzzy find'
 } defer fzf %{
     map global normal <c-p> ': fzf-mode<ret>'
@@ -41,13 +46,14 @@ set-option global lsp_config %{
            [language.python.settings._]
            "pyls.configurationSources" = ["python-lsp-black","pyflakes","mccabe","pycodestyle","rope"]
 }
+
 # LSP: Python
 hook global WinSetOption filetype=python %{
     jedi-enable-autocomplete
     lint-enable
     set-option global lintcmd 'flake8'
 }
-# 
+
 map global user l %{: enter-user-mode lsp<ret>} -docstring "LSP mode"
 
 # Format go files
@@ -73,8 +79,6 @@ hook global InsertCompletionShow .* %{
         }
     }
 }
-
-
 
 define-command comment %{
     try %{

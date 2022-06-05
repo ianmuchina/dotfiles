@@ -1,9 +1,7 @@
 #!/bin/bash
-# Helper function
-load() { test -f "$1" && source "$1"; } #
-# Source files
-load "/etc/skel/.bashrc" # System bashrc
+load() { test -f "$1" && source "$1"; }
 
+load "/etc/skel/.bashrc"          # System bashrc
 load "$HOME/.config/bash/paths"   # paths
 load "$HOME/.config/bash/alias"   # Aliases
 load "$HOME/.config/bash/func"    # Functions

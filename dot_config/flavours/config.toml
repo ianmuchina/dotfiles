@@ -10,40 +10,9 @@ file = "~/.config/alacritty/alacritty.yml"
 template = "alacritty"
 subtemplate = "default-256"
 
-# Neovim
-[[item]]
-file = "~/.config/nvim/colors/flavours.vim"
-template = "vim"
-rewrite = true
-
-# Lightline (Neovim)
-[[item]]
-file = "~/.config/nvim/autoload/lightline/colorscheme/flavours.vim"
-template = "lightline"
-rewrite = true
-
-# Vim
-[[item]]
-file = "~/.config/vim/colors/flavours.vim"
-template = "vim"
-rewrite = true
 
 # Kakoune
 [[item]]
 file = "~/.config/kak/colors/flavours.kak"
 template = "kakoune"
 rewrite = true
-
-# XFCE4 Terminal
-[[item]]
-file = "~/.config/xfce4/terminal/colorschemes/flavours.theme"
-template = "xfce4-terminal"
-rewrite = true
-
-
-# Mousepad & Other Gnome Text Editors
-[[item]]
-file = "~/.local/share/gtksourceview-3.0/styles/flavours.xml"
-template = "gtksourceview3"
-rewrite = true
-

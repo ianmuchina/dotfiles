@@ -20,9 +20,12 @@ addPath "/snap/bin"
 addPath "$HOME/.local/bin"
 
 # Package Managers & Language Runtimes
-addPath "$HOME/.fnm"        # Nodejs version Manager
-addPath "$HOME/.yarn/bin"   # alt npm client
-addPath "$HOME/go/bin"      # Golang
-addPath "$HOME/gems/bin"    # Ruby
-addPath "$HOME/.cargo/bin"  # Rust
-addPath "/usr/lib/dart/bin" # Dart
+addPath "$HOME/.fnm"              # Nodejs version Manager
+addPath "$HOME/.yarn/bin"         # alt npm client
+addPath "$HOME/.deno/bin"         # Deno
+addPath "$HOME/go/bin"            # Golang
+addPath "$HOME/gems/bin"          # Ruby
+addPath "$HOME/.cargo/bin"        # Rust
+addPath "/usr/lib/dart/bin"       # Dart
+addPath "$HOME/.pub-cache/bin"    # Dart Executable
+addPath "$HOME/.local/share/pnpm" # pnpm

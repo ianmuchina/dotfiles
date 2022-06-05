@@ -2,7 +2,8 @@
 replace() {
   # Dynamic alias
   # Replacements For standard utilities
-  command -v "$2" >/dev/null && alias $1="$2"
+  command -v "$2" >/dev/null &&
+    alias $1="$2"
 }
 
 replace docker podman
@@ -15,6 +16,8 @@ replace fd fdfind
 # Normal aliases
 alias reload='. ~/.bashrc' # Reload bashrc
 alias c='reload'           # Reload bashrc
+
+alias l='ls --no-user --no-time --no-permissions -l '
 
 alias html2md='pandoc -f html -t markdown'
 
@@ -55,3 +58,77 @@ alias fgrep='fgrep --colour=auto'
 alias cp="cp -i"     # Ask for confirmation before overwrites
 alias df='df -h'     # Human readable
 alias free='free -h' # Human readable
+
+PREVIEW_CMD="apt show {} 2>/dev/null | batcat -p -l yaml --color always"
+alias fyx='cat ~/.local/inx.txt | fzf --preview="$PREVIEW_CMD"'
+
+# List fonts
+alias fl='fc-list | cut -f2 -d ":" | sort -u | fzf'
+
+# Youtube DL
+
+CMD="youtube-dl"
+
+Q_HD="720"
+Q_FHD="1080"
+Q_DEFAULT="$Q_HD"
+
+command -v yt-dlp >/dev/null &&
+  CMD="yt-dlp" \
+    ARGS=""
+# Video
+ydl() {
+  "$CMD" "$ARGS" \
+    --no-playlist \
+    --embed-subs \
+    --format "[height<=$Q_DEFAULT]" \
+    --output "$HOME/Videos/%(uploader)s/%(title)s.%(ext)s" "$@"
+}
+
+# Video (1080p)
+yfhd() {
+  "$CMD" "$ARGS" \
+    --no-playlist \
+    --embed-subs \
+    --format "[height<=$Q_FHD]" \
+    --output "$HOME/Videos/%(uploader)s/%(title)s.%(ext)s" "$@"
+}
+
+# Video (720p)
+yhd() {
+  "$CMD" "$ARGS" \
+    --no-playlist \
+    --embed-subs \
+    --format "[height<=$Q_HD]" \
+    --output "$HOME/Videos/%(uploader)s/%(title)s.%(ext)s" "$@"
+}
+
+# Video Playlist
+ypl() {
+  "$CMD" "$ARGS" \
+    --yes-playlist \
+    --format "[height<=$Q_DEFAULT]" \
+    --output "$HOME/Videos/%(uploader)s/%(playlist)s/%(title)s.%(ext)s" "$@"
+}
+
+# Audio
+ymp3() {
+  "$CMD" "$ARGS" \
+    --extract-audio \
+    --audio-format mp3 \
+    --no-playlist \
+    --embed-thumbnail \
+    --format "bestaudio" \
+    --output "$HOME/Music/%(uploader)s/%(title)s.%(ext)s" "$@"
+}
+
+# Audio Playlist
+ypl3() {
+  "$CMD" "$ARGS" \
+    --extract-audio \
+    --audio-format mp3 \
+    --yes-playlist \
+    --embed-thumbnail \
+    --format "bestaudio" \
+    --output "$HOME/Music/%(uploader)s/%(playlist)s/%(title)s.%(ext)s" "$@"
+}

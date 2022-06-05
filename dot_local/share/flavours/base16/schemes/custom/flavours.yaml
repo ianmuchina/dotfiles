@@ -1,7 +1,7 @@
 scheme: "kripton"
 author: ""
-base00: "131519" #Default Background
-base01: "131519" #Lighter Background (Used for status bars)
+base00: "000000" #Default Background
+base01: "000000" #Lighter Background (Used for status bars)
 base02: "303030" #Selection Background
 base03: "505050" #Comments, Invisibles, Line Highlighting
 base04: "B0B0B0" #Dark Foreground (Used for status bars)
